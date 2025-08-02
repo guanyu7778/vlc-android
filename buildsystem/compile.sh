@@ -345,7 +345,6 @@ fi
 ############
 # Make VLC #
 ############
-export HAVE_APPSTREAM=no
 diagnostic "Configuring"
 
 # Build LibVLC if asked for it, or needed by medialibrary
