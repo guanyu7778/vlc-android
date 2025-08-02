@@ -28,7 +28,12 @@ jobs:
           sudo apt-get install -y automake ant autopoint cmake build-essential libtool-bin \
             patch pkg-config protobuf-compiler ragel subversion unzip git \
             openjdk-8-jre openjdk-8-jdk flex python3 wget ninja-build meson
-
+            
+      - name: Configure git user
+        run: |
+          git config --global user.email "ci@example.com"
+          git config --global user.name "CI Bot"
+          
       - name: Build LibVLC for arm64
         run: |
           export ANDROID_SDK=$ANDROID_SDK_ROOT
