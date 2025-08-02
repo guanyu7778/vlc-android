@@ -42,7 +42,7 @@ jobs:
           export ANDROID_SDK=$ANDROID_SDK_ROOT
           export ANDROID_NDK=$ANDROID_NDK_ROOT
           chmod +x buildsystem/compile.sh
-          ./buildsystem/compile.sh -l -a arm64
+          ./buildsystem/compile.sh -l -a -r arm64
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
