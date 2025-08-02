@@ -327,12 +327,12 @@ if [ -z "$VLC_SRC_DIR" ]; then
     fi
 
     (cd ${VLC_LIBJNI_PATH} && ./buildsystem/get-vlc.sh ${get_vlc_args})
-	(cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/share/org.videolan.vlc.appdata.xml.tmp)
-	(cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/share/org.videolan.vlc.appdata.xml)
-	(cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/org.videolan.vlc.appdata.xml.tmp)
-	(cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/org.videolan.vlc.appdata.xml)
-	(cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in org.videolan.vlc.appdata.xml.tmp)
-	(cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in org.videolan.vlc.appdata.xml)
+	# (cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/share/org.videolan.vlc.appdata.xml.tmp)
+	# (cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/share/org.videolan.vlc.appdata.xml)
+	# (cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/org.videolan.vlc.appdata.xml.tmp)
+	# (cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/org.videolan.vlc.appdata.xml)
+	# (cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in org.videolan.vlc.appdata.xml.tmp)
+	# (cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in org.videolan.vlc.appdata.xml)
 	
 fi
 
@@ -345,6 +345,7 @@ fi
 ############
 # Make VLC #
 ############
+export HAVE_APPSTREAM=no
 diagnostic "Configuring"
 
 # Build LibVLC if asked for it, or needed by medialibrary
