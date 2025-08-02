@@ -47,6 +47,4 @@ jobs:
         with:
           name: vlc-libvlc-arm64
           path: |
-            build-android-arm64/install/lib/*.so
-            build-android-arm64/install/include
-            ${{ env.ANDROID_NDK_ROOT }}/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_shared.so
+            ./libvlcjni/libvlc/libs/arm64-v8a/*.so
