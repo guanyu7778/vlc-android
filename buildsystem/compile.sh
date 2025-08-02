@@ -327,6 +327,8 @@ if [ -z "$VLC_SRC_DIR" ]; then
     fi
 
     (cd ${VLC_LIBJNI_PATH} && ./buildsystem/get-vlc.sh ${get_vlc_args})
+	cp vlc/share/vlc.appdata.xml.in.in vlc/share/vlc.appdata.xml
+	
 fi
 
 # Always clone VLC when using --init since we'll need to package some files
