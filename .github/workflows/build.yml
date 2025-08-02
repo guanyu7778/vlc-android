@@ -54,7 +54,7 @@ jobs:
           ./buildsystem/compile.sh -l -a arm64
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: vlc-libvlc-arm64
           path: |
