@@ -2,7 +2,7 @@
 name: Build VLC-Android LibVLC arm64
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: 
 
 jobs:
   build-libvlc:
