@@ -329,6 +329,10 @@ if [ -z "$VLC_SRC_DIR" ]; then
     (cd ${VLC_LIBJNI_PATH} && ./buildsystem/get-vlc.sh ${get_vlc_args})
 	(cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/share/org.videolan.vlc.appdata.xml.tmp)
 	(cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/share/org.videolan.vlc.appdata.xml)
+	(cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/org.videolan.vlc.appdata.xml.tmp)
+	(cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/org.videolan.vlc.appdata.xml)
+	(cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in org.videolan.vlc.appdata.xml.tmp)
+	(cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in org.videolan.vlc.appdata.xml)
 	
 fi
 
