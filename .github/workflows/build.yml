@@ -1,0 +1,61 @@
+# .github/workflows/build.yml
+name: Build VLC-Android LibVLC arm64
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-libvlc:
+    runs-on: ubuntu-latest
+
+    env:
+      ANDROID_SDK_ROOT: ${{ runner.temp }}/android-sdk
+      ANDROID_NDK_ROOT: ${{ runner.temp }}/android-ndk
+      PATH: ${{ runner.temp }}/android-sdk/cmdline-tools/latest/bin:${{ env.PATH }}
+
+    steps:
+      - name: Checkout repository with submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y automake ant autopoint cmake build-essential libtool-bin \
+            patch pkg-config protobuf-compiler ragel subversion unzip git \
+            openjdk-8-jdk flex python3 wget ninja-build meson
+
+      - name: Download Android SDK Command line tools
+        run: |
+          mkdir -p $ANDROID_SDK_ROOT/cmdline-tools
+          wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip -O cmdline-tools.zip
+          unzip cmdline-tools.zip -d $ANDROID_SDK_ROOT/cmdline-tools
+          mv $ANDROID_SDK_ROOT/cmdline-tools/cmdline-tools $ANDROID_SDK_ROOT/cmdline-tools/latest
+
+      - name: Accept Android SDK licenses
+        run: yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses
+
+      - name: Download Android NDK r25b
+        run: |
+          wget https://dl.google.com/android/repository/android-ndk-r25b-linux.zip -O android-ndk.zip
+          unzip android-ndk.zip -d $RUNNER_TEMP
+          mv $RUNNER_TEMP/android-ndk-r25b $ANDROID_NDK_ROOT
+
+      - name: Build LibVLC for arm64
+        run: |
+          export ANDROID_SDK=$ANDROID_SDK_ROOT
+          export ANDROID_NDK=$ANDROID_NDK_ROOT
+          chmod +x buildsystem/compile.sh
+          ./buildsystem/compile.sh -l -a arm64
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: vlc-libvlc-arm64
+          path: |
+            build-android-arm64/install/lib/*.so
+            build-android-arm64/install/include
