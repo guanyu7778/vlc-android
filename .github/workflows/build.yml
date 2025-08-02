@@ -48,3 +48,4 @@ jobs:
           name: vlc-libvlc-arm64
           path: |
             libvlcjni/libvlc/libs/arm64-v8a/*.so
+            libvlcjni/vlc/include/**/*.h
