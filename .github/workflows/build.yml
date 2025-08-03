@@ -45,6 +45,17 @@ jobs:
       - name: Collect built .so files
         run: |
           mkdir -p release_files
+          cd build
+          ls
+          echo "当前目录是：$(pwd)"
+          cd ../libvlcjni
+          echo "当前目录是：$(pwd)"
+          ls
+          cd libs
+          echo "当前目录是：$(pwd)"
+          ls
+          cd arm64-v8a
+          echo "当前目录是：$(pwd)"
           ls
           cp libvlcjni/libvlc/libs/arm64-v8a/libvlc.so release_files/
           cp libvlcjni/libvlc/libs/arm64-v8a/libvlcjni.so release_files/
