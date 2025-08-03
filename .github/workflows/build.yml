@@ -45,6 +45,7 @@ jobs:
       - name: Collect built .so files
         run: |
           mkdir -p release_files
+          ls
           cp libvlcjni/libvlc/libs/arm64-v8a/libvlc.so release_files/
           cp libvlcjni/libvlc/libs/arm64-v8a/libvlcjni.so release_files/
           cp libvlcjni/libvlc/libs/arm64-v8a/libc++_shared.so release_files/
