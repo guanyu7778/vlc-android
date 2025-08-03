@@ -42,18 +42,20 @@ jobs:
           chmod +x buildsystem/compile.sh
           ./buildsystem/compile.sh -vlc4 -l -a arm64 -r
 
-      - name: Create release zip
+      - name: Collect built .so files
         run: |
-          mkdir -p release_files/include
+          mkdir -p release_files
           cp libvlcjni/libvlc/libs/arm64-v8a/libvlc.so release_files/
           cp libvlcjni/libvlc/libs/arm64-v8a/libvlcjni.so release_files/
-          cp libvlcjni/vlc/include/vlc/*.h release_files/include/
+          cp libvlcjni/libvlc/libs/arm64-v8a/libc++_shared.so release_files/
+
+      - name: Create release zip
+        run: |
           cd release_files
           zip -r ../vlc-libvlc-arm64.zip .
-          cd ..
-
-      - name: Upload zip
+          
+      - name: Upload libvlc .so zip
         uses: actions/upload-artifact@v4
         with:
-          name: vlc-binaries
+          name: vlc-libvlc-arm64
           path: vlc-libvlc-arm64.zip
