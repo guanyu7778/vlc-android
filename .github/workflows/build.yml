@@ -51,3 +51,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: /home/runner/work/vlc-android/vlc-android-full.zip
+          tag_name: vlc-android-v${{ github.run_number }} 
