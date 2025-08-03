@@ -46,9 +46,9 @@ jobs:
       - name: Collect specific .so files
         run: |
           mkdir -p release_files
-          cp vlc-android/libvlcjni/libvlc/jni/libs/arm64-v8a/libvlcjni.so release_files/
-          cp vlc-android/libvlcjni/libvlc/jni/libs/arm64-v8a/libvlc.so release_files/
-          cp vlc-android/libvlcjni/libvlc/jni/libs/arm64-v8a/libc++_shared.so release_files/
+          cp libvlcjni/libvlc/jni/libs/arm64-v8a/libvlcjni.so release_files/
+          cp libvlcjni/libvlc/jni/libs/arm64-v8a/libvlc.so release_files/
+          cp libvlcjni/libvlc/jni/libs/arm64-v8a/libc++_shared.so release_files/
       
       - name: Zip selected .so files
         run: |
