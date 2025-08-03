@@ -58,4 +58,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: vlc-libvlc-arm64
-          path: vlc-libvlc-arm64.zip
+          path: ../vlc-libvlc-arm64.zip
