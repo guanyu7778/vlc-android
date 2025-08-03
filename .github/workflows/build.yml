@@ -43,12 +43,20 @@ jobs:
           chmod +x buildsystem/compile.sh
           ./buildsystem/compile.sh -vlc4 -l -a arm64 -r
 
-      - name: Zip entire workspace
+      - name: Collect specific .so files
         run: |
-          cd /home/runner/work/vlc-android
-          zip -r vlc-android-full.zip vlc-android
+          mkdir -p release_files
+          cp vlc-android/libvlcjni/libvlc/jni/libs/arm64-v8a/libvlcjni.so release_files/
+          cp vlc-android/libvlcjni/libvlc/jni/libs/arm64-v8a/libvlc.so release_files/
+          cp vlc-android/libvlcjni/libvlc/jni/libs/arm64-v8a/libc++_shared.so release_files/
+      
+      - name: Zip selected .so files
+        run: |
+          cd release_files
+          zip ../vlc-lib-files.zip *
+      
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: /home/runner/work/vlc-android/vlc-android-full.zip
-          tag_name: vlc-android-v${{ github.run_number }} 
+          files: ../vlc-lib-files.zip
+          tag_name: vlc-android-v${{ github.run_number }}
