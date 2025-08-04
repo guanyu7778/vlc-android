@@ -329,6 +329,7 @@ if [ -z "$VLC_SRC_DIR" ]; then
     (cd ${VLC_LIBJNI_PATH} && ./buildsystem/get-vlc.sh ${get_vlc_args})
     (cd ${VLC_LIBJNI_PATH}/vlc && ls)
     (cd ${VLC_LIBJNI_PATH} && cp ../patch/udp.c.p ./vlc/src/network/udp.c)
+	(cd ${VLC_LIBJNI_PATH} && cp ../patch/live555.cpp.p ./vlc/modules/access/live555.cpp)
 fi
 
 # Always clone VLC when using --init since we'll need to package some files
