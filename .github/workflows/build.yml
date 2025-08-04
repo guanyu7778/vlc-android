@@ -58,5 +58,5 @@ jobs:
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ../vlc-lib-files.zip
+          files: vlc-lib-files.zip
           tag_name: vlc-android-v${{ github.run_number }}
