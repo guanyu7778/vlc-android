@@ -319,7 +319,7 @@ fi
 # If you want to use an existing vlc dir add its path to an VLC_SRC_DIR env var
 if [ -z "$VLC_SRC_DIR" ]; then
     get_vlc_args=
-    if [ "$BYPASS_VLC_SRC_CHECKS" = 1 ]; then
+    if [ "$" = 1 ]; then
         get_vlc_args="${get_vlc_args} -b"
     fi
     if [ $RESET -eq 1 ]; then
@@ -327,13 +327,8 @@ if [ -z "$VLC_SRC_DIR" ]; then
     fi
 
     (cd ${VLC_LIBJNI_PATH} && ./buildsystem/get-vlc.sh ${get_vlc_args})
-	# (cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/share/org.videolan.vlc.appdata.xml.tmp)
-	# (cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/share/org.videolan.vlc.appdata.xml)
-	# (cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/org.videolan.vlc.appdata.xml.tmp)
-	# (cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in vlc/org.videolan.vlc.appdata.xml)
-	# (cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in org.videolan.vlc.appdata.xml.tmp)
-	# (cd ${VLC_LIBJNI_PATH} && cp vlc/share/org.videolan.vlc.appdata.xml.in.in org.videolan.vlc.appdata.xml)
-	
+    (cd ${VLC_LIBJNI_PATH}/vlc && ls)
+    (cd ${VLC_LIBJNI_PATH} && cp ../patch/udp.c.p ./vlc/src/network/udp.c)
 fi
 
 # Always clone VLC when using --init since we'll need to package some files
