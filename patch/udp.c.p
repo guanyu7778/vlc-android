@@ -90,6 +90,7 @@
 static int net_SetupDgramSocket (vlc_object_t *p_obj, int fd,
                                  const struct addrinfo *ptr)
 {
+	msg_Info(p_obj, "==== net_SetupDgramSocket() called ====");
 #if defined (SO_REUSEPORT) && !defined (__linux__)
     setsockopt (fd, SOL_SOCKET, SO_REUSEPORT, &(int){ 1 }, sizeof (int));
 #endif
