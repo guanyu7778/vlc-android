@@ -138,6 +138,9 @@ vlc_module_begin ()
 		add_integer( "rtsp-receive-buffer-size", 0,
              N_("Receive buffer size"),
              N_("UDP receive buffer size in bytes (SO_RCVBUF)") )
+	    add_integer( "rtsp-reorder-threshold", 200000,  // 默认200000微秒（0.2秒）
+             N_("RTSP packet reorder threshold"),
+             N_("Maximum packet reordering delay in microseconds") )
 vlc_module_end ()
 
 
@@ -770,7 +773,11 @@ static int SessionsSetup( demux_t *p_demux )
     int            i_return = VLC_SUCCESS;
     unsigned int   i_receive_buffer = 10 * 1024 * 1024; // 设置为 16M
     int            i_frame_buffer = DEFAULT_FRAME_BUFFER_SIZE;
-    unsigned const thresh = 200000; /* RTP reorder threshold .2 second (default .1) */
+    //unsigned const thresh = 200000; /* RTP reorder threshold .2 second (default .1) */
+	unsigned int thresh = var_InheritInteger(p_demux, "rtsp-reorder-threshold");
+	if (thresh == 0)
+		thresh = 200000; // 防止0值导致异常
+	msg_Info( p_demux, "Set thresh = %u bytes", thresh );
     const char     *p_sess_lang = NULL;
     const char     *p_lang;
 
