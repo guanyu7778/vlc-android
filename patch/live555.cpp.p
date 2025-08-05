@@ -137,7 +137,7 @@ vlc_module_begin ()
                      FRAME_BUFFER_SIZE_TEXT, FRAME_BUFFER_SIZE_LONGTEXT )
 		add_integer( "rtsp-receive-buffer-size", 0,
              N_("Receive buffer size"),
-             N_("UDP receive buffer size in bytes (SO_RCVBUF)"), false )
+             N_("UDP receive buffer size in bytes (SO_RCVBUF)") )
 vlc_module_end ()
 
 
